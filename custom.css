@@ -1,0 +1,39 @@
+/* 🌸 Aesthetic Pink Theme 🌸 */
+body {
+  background-color: #fff9fb;
+}
+h1 {
+  color: #d81b60;
+}
+h2 {
+  color: #ec407a;
+}
+h3 {
+  color: #ad1457;
+}
+a {
+  color: #d81b60;
+}
+.bd-sidebar {
+  background-color: #fff0f6;
+}
+.bd-sidebar-primary .nav-link {
+  color: #ad1457;
+}
+.bd-sidebar-primary .nav-link:hover {
+  color: #ec407a;
+  background-color: #fce4ec;
+}
+.bd-article-container {
+  background-color: #ffffff;
+}
+table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+table thead {
+  background-color: #f8bbd0;
+}
+table tbody tr:hover {
+  background-color: #fff0f6;
+}
