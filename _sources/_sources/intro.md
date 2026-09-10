@@ -1,23 +1,19 @@
-# 🌸 Introduction
-
-<div style="text-align: center;">
-
-# 🌸 Welcome to My Jupyter Book 🌸
-
-</div>
+🌸 Welcome to My Jupyter Book 🌸
 
 <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, #fff0f6, #fce4ec); border-radius: 20px; margin: 20px 0;">
 
 <h2 style="color: #d81b60;">♡ Shovya Lily Lau ♡</h2>
 
-<p style="color: #6d4c5b; font-size: 16px;">
-<b>NIM:</b> 230411100138<br>
-<b>Email:</b> 230411100138@student.trunojoyo.ac.id
-</p>
+<p style="color: #6d4c5b; font-size: 16px;"> <b>NIM:</b> 230411100138<br> <b>Email:</b> 230411100138@student.trunojoyo.ac.id </p>
 
 </div>
 
-## 🌷 Pengantar Data Mining 🌷
+🎀 Profile
+🌷 Informasi	💕 Keterangan
+Nama	Shovya Lily Lau
+NIM	230411100138
+Email	230411100138@student.trunojoyo.ac.id
+🌷 Pengantar Data Mining
 
 Data Mining merupakan proses untuk menemukan pola, informasi, dan pengetahuan yang bermanfaat dari sekumpulan data dalam jumlah besar. Data yang awalnya hanya berupa kumpulan angka, teks, atau informasi lainnya dapat diolah sehingga menghasilkan informasi yang lebih bermakna. Proses ini memanfaatkan berbagai teknik dari bidang statistik, matematika, dan kecerdasan buatan untuk membantu memahami data.
 
