@@ -1,19 +1,14 @@
-# 🌸 Introduction
-<div style="text-align: center;">
-
 # 🌸 Welcome to My Jupyter Book 🌸
-
-</div>
 
 <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, #fff0f6, #fce4ec); border-radius: 20px; margin: 20px 0;">
 
-<h2 style="color: #d81b60;">♡ Shovya Lily Lau ♡</h2>
+<p style="color: #d81b60; font-size: 28px; font-weight: bold; margin: 0;">♡ Shovya Lily Lau ♡</p>
 
-<p style="color: #6d4c5b; font-size: 16px;"> <b>NIM:</b> 230411100138<br> <b>Email:</b> 230411100138@student.trunojoyo.ac.id </p>
+<p style="color: #6d4c5b; font-size: 16px;"><b>NIM:</b> 230411100138<br><b>Email:</b> 230411100138@student.trunojoyo.ac.id</p>
 
 </div>
 
-🌷 Pengantar Data Mining 🌷
+## 🌷 Pengantar Data Mining 🌷
 
 Data Mining merupakan proses untuk menemukan pola, informasi, dan pengetahuan yang bermanfaat dari sekumpulan data dalam jumlah besar. Data yang awalnya hanya berupa kumpulan angka, teks, atau informasi lainnya dapat diolah sehingga menghasilkan informasi yang lebih bermakna. Proses ini memanfaatkan berbagai teknik dari bidang statistik, matematika, dan kecerdasan buatan untuk membantu memahami data.
 
@@ -23,8 +18,8 @@ Perkembangan teknologi membuat jumlah data yang dihasilkan semakin besar sehingg
 
 <div style="text-align: center; padding: 15px; background-color: #fff0f6; border-radius: 15px; color: #ad1457;">
 
-♡ Learn • Explore • Discover ♡
+<p style="margin: 4px 0;">♡ Learn • Explore • Discover ♡</p>
 
-Turning data into meaningful knowledge.
+<p style="margin: 4px 0;">Turning data into meaningful knowledge.</p>
 
 </div>
