@@ -1,4 +1,4 @@
-# 🌸 Welcome to My Jupyter Book 🌸
+# 🌸 Welcome to My Jupyter Book 
 
 <div style="text-align: center; padding: 25px; background: linear-gradient(135deg, #fff0f6, #fce4ec); border-radius: 20px; margin: 20px 0;">
 
