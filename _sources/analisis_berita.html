@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Data Understanding &#8212; Data Mining</title>
+    <title>🌸 Analisis Berita &#8212; Data Mining</title>
   
   
   
@@ -210,6 +210,7 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../crawling.html">🌸 Scrapping Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../analisis_berita.html">🌸 Analisis Berita</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../skipgram_vs_cbow_berita.html">🌸 Analisis BeritaWord Embedding Skip-gram vs CBOW pada Klasifikasi Berita (Sport vs Finance)</a></li>
 </ul>
 
     </div>
@@ -348,7 +349,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1. Data Understanding</h1>
+    <h1>🌸 Analisis Berita</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -358,51 +359,52 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Data Understanding</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset">1.1 Membaca Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-dataset">1.2 Melihat Struktur Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-jumlah-data">1.3 Mengecek Jumlah Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-distribusi-label">1.4 Melihat Distribusi Label</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-contoh-data">1.5 Menampilkan Contoh Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-kosong">1.6 Mengecek Data Kosong</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-duplikat">1.7 Mengecek Data Duplikat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">1. Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset">1.1 Membaca Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-dataset">1.2 Melihat Struktur Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-jumlah-data">1.3 Mengecek Jumlah Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-distribusi-label">1.4 Melihat Distribusi Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-contoh-data">1.5 Menampilkan Contoh Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-kosong">1.6 Mengecek Data Kosong</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-duplikat">1.7 Mengecek Data Duplikat</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">2. Data Preprocessing</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-folding">2.1 Case Folding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data">2.2 Cleaning Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisasi">2.3 Tokenisasi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">2.4 Stopword Removal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">2.5 Stemming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">2. Data Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-folding">2.1 Case Folding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data">2.2 Cleaning Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisasi">2.3 Tokenisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">2.4 Stopword Removal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">2.5 Stemming</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur">3. Ekstraksi Fitur</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">4. One-Hot Encoding</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">5. Bag of Words</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representasi-tf-idf">6. Representasi TF-IDF</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-dengan-pca">7. Reduksi Dimensi dengan PCA</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-tf-idf">7.1 Menyiapkan Data TF-IDF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menerapkan-pca">7.2 Menerapkan PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-explained-variance">7.3 Melihat Explained Variance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-cumulative-explained-variance">7.4 Menghitung Cumulative Explained Variance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-jumlah-komponen">7.5 Menentukan Jumlah Komponen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-reduksi-dimensi">7.6 Melakukan Reduksi Dimensi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur">3. Ekstraksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">4. One-Hot Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">5. Bag of Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representasi-tf-idf">6. Representasi TF-IDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-dengan-pca">7. Reduksi Dimensi dengan PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-tf-idf">7.1 Menyiapkan Data TF-IDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menerapkan-pca">7.2 Menerapkan PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-explained-variance">7.3 Melihat Explained Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-cumulative-explained-variance">7.4 Menghitung Cumulative Explained Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-jumlah-komponen">7.5 Menentukan Jumlah Komponen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-reduksi-dimensi">7.6 Melakukan Reduksi Dimensi</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-hasil-pca">8. Visualisasi Data Hasil PCA</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-hasil-pca">8.1 Menyiapkan Data Hasil PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-pca">8.2 Visualisasi Hasil PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-hasil-pca">8.3 Scatter Plot Hasil PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-hasil-pca">8. Visualisasi Data Hasil PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-hasil-pca">8.1 Menyiapkan Data Hasil PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-pca">8.2 Visualisasi Hasil PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-hasil-pca">8.3 Scatter Plot Hasil PCA</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil">9. Perbandingan Hasil</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-tf-idf">9.1 Hasil TF-IDF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca">9.2 Hasil PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca-untuk-visualisasi">9.3 Hasil PCA untuk Visualisasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil">9. Perbandingan Hasil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-tf-idf">9.1 Hasil TF-IDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca">9.2 Hasil PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca-untuk-visualisasi">9.3 Hasil PCA untuk Visualisasi</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -413,10 +415,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="data-understanding">
-<h1>1. Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="analisis-berita">
+<h1>🌸 Analisis Berita<a class="headerlink" href="#analisis-berita" title="Link to this heading">#</a></h1>
+<section id="data-understanding">
+<h2>1. Data Understanding<a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
 <section id="membaca-dataset">
-<h2>1.1 Membaca Dataset<a class="headerlink" href="#membaca-dataset" title="Link to this heading">#</a></h2>
+<h3>1.1 Membaca Dataset<a class="headerlink" href="#membaca-dataset" title="Link to this heading">#</a></h3>
 <p>Pada tahap ini, dataset hasil crawling berita Sport dan Finance dibaca menggunakan library <code class="docutils literal notranslate"><span class="pre">pandas</span></code>. Dataset yang digunakan adalah <code class="docutils literal notranslate"><span class="pre">dataset_berita.csv</span></code>.</p>
 <p>Data kemudian disimpan ke dalam variabel <code class="docutils literal notranslate"><span class="pre">df</span></code> dalam bentuk DataFrame agar lebih mudah diperiksa dan diolah pada tahap berikutnya.</p>
 <div class="cell docutils container">
@@ -503,7 +507,7 @@ document.write(`
 </div>
 </section>
 <section id="melihat-struktur-dataset">
-<h2>1.2 Melihat Struktur Dataset<a class="headerlink" href="#melihat-struktur-dataset" title="Link to this heading">#</a></h2>
+<h3>1.2 Melihat Struktur Dataset<a class="headerlink" href="#melihat-struktur-dataset" title="Link to this heading">#</a></h3>
 <p>dilakukan pengecekan struktur dataset untuk mengetahui jumlah baris dan kolom yang tersedia. Informasi ini digunakan untuk melihat bentuk awal data sebelum masuk ke tahap preprocessing.</p>
 <p>Selain itu, nama kolom dan tipe data setiap kolom juga dapat dilihat untuk mengetahui jenis data yang digunakan.</p>
 <div class="cell docutils container">
@@ -534,7 +538,7 @@ memory usage: 4.8+ KB
 </div>
 </section>
 <section id="mengecek-jumlah-data">
-<h2>1.3 Mengecek Jumlah Data<a class="headerlink" href="#mengecek-jumlah-data" title="Link to this heading">#</a></h2>
+<h3>1.3 Mengecek Jumlah Data<a class="headerlink" href="#mengecek-jumlah-data" title="Link to this heading">#</a></h3>
 <p>Pada tahap ini, jumlah seluruh berita yang terdapat dalam dataset dihitung. Pengecekan ini dilakukan untuk memastikan data yang berhasil dikumpulkan sesuai dengan jumlah data yang ditargetkan pada proses crawling.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -551,7 +555,7 @@ memory usage: 4.8+ KB
 </div>
 </section>
 <section id="melihat-distribusi-label">
-<h2>1.4 Melihat Distribusi Label<a class="headerlink" href="#melihat-distribusi-label" title="Link to this heading">#</a></h2>
+<h3>1.4 Melihat Distribusi Label<a class="headerlink" href="#melihat-distribusi-label" title="Link to this heading">#</a></h3>
 <p>jumlah berita berdasarkan kategorinya dihitung menggunakan kolom <code class="docutils literal notranslate"><span class="pre">label</span></code>. Dataset terdiri dari dua kategori berita, yaitu <code class="docutils literal notranslate"><span class="pre">sport</span></code> dan <code class="docutils literal notranslate"><span class="pre">finance</span></code>.</p>
 <p>Pengecekan ini dilakukan untuk mengetahui apakah jumlah data pada setiap kategori sudah sesuai.</p>
 <div class="cell docutils container">
@@ -572,7 +576,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="menampilkan-contoh-data">
-<h2>1.5 Menampilkan Contoh Data<a class="headerlink" href="#menampilkan-contoh-data" title="Link to this heading">#</a></h2>
+<h3>1.5 Menampilkan Contoh Data<a class="headerlink" href="#menampilkan-contoh-data" title="Link to this heading">#</a></h3>
 <p>beberapa data dari masing-masing kategori ditampilkan untuk melihat isi berita yang berhasil dikumpulkan.</p>
 <p>Data yang ditampilkan terdiri dari <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">isi_berita</span></code>, dan <code class="docutils literal notranslate"><span class="pre">label</span></code>. Contoh data ini digunakan untuk melihat kondisi teks sebelum dilakukan preprocessing.</p>
 <div class="cell docutils container">
@@ -718,7 +722,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="mengecek-data-kosong">
-<h2>1.6 Mengecek Data Kosong<a class="headerlink" href="#mengecek-data-kosong" title="Link to this heading">#</a></h2>
+<h3>1.6 Mengecek Data Kosong<a class="headerlink" href="#mengecek-data-kosong" title="Link to this heading">#</a></h3>
 <p>Pada tahap ini, dilakukan pengecekan terhadap data yang memiliki nilai kosong atau <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Data kosong perlu diketahui sebelum preprocessing karena dapat memengaruhi proses pengolahan teks.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -738,7 +742,7 @@ dtype: int64
 </div>
 </section>
 <section id="mengecek-data-duplikat">
-<h2>1.7 Mengecek Data Duplikat<a class="headerlink" href="#mengecek-data-duplikat" title="Link to this heading">#</a></h2>
+<h3>1.7 Mengecek Data Duplikat<a class="headerlink" href="#mengecek-data-duplikat" title="Link to this heading">#</a></h3>
 <p>Pada tahap ini, dilakukan pengecekan terhadap data yang memiliki isi yang sama. Data duplikat perlu diperiksa agar satu berita tidak diproses lebih dari satu kali.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -755,10 +759,10 @@ dtype: int64
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-preprocessing">
-<h1>2. Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h1>
+<section id="data-preprocessing">
+<h2>2. Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
 <section id="case-folding">
-<h2>2.1 Case Folding<a class="headerlink" href="#case-folding" title="Link to this heading">#</a></h2>
+<h3>2.1 Case Folding<a class="headerlink" href="#case-folding" title="Link to this heading">#</a></h3>
 <p>Case folding dilakukan untuk mengubah seluruh huruf pada teks menjadi huruf kecil atau lowercase.</p>
 <p>Tujuannya adalah agar kata yang sama tetapi memiliki perbedaan penggunaan huruf besar dan kecil dianggap sebagai kata yang sama. Contohnya, kata <code class="docutils literal notranslate"><span class="pre">Indonesia</span></code>, <code class="docutils literal notranslate"><span class="pre">INDONESIA</span></code>, dan <code class="docutils literal notranslate"><span class="pre">indonesia</span></code> akan menjadi <code class="docutils literal notranslate"><span class="pre">indonesia</span></code>.</p>
 <div class="cell docutils container">
@@ -826,7 +830,7 @@ dtype: int64
 </div>
 </section>
 <section id="cleaning-data">
-<h2>2.2 Cleaning Data<a class="headerlink" href="#cleaning-data" title="Link to this heading">#</a></h2>
+<h3>2.2 Cleaning Data<a class="headerlink" href="#cleaning-data" title="Link to this heading">#</a></h3>
 <p>Cleaning dilakukan untuk membersihkan teks dari angka, tanda baca, URL, dan karakter yang tidak diperlukan.</p>
 <p>Tahap ini bertujuan agar teks yang digunakan pada proses ekstraksi fitur hanya berisi kata-kata yang relevan.</p>
 <div class="cell docutils container">
@@ -909,7 +913,7 @@ dtype: int64
 </div>
 </section>
 <section id="tokenisasi">
-<h2>2.3 Tokenisasi<a class="headerlink" href="#tokenisasi" title="Link to this heading">#</a></h2>
+<h3>2.3 Tokenisasi<a class="headerlink" href="#tokenisasi" title="Link to this heading">#</a></h3>
 <p>Tokenisasi merupakan proses memisahkan teks menjadi bagian-bagian yang lebih kecil berupa kata atau token.</p>
 <p>Sebagai contoh, kalimat <code class="docutils literal notranslate"><span class="pre">tim</span> <span class="pre">indonesia</span> <span class="pre">memenangkan</span> <span class="pre">pertandingan</span></code> akan diubah menjadi beberapa token, yaitu <code class="docutils literal notranslate"><span class="pre">tim</span></code>, <code class="docutils literal notranslate"><span class="pre">indonesia</span></code>, <code class="docutils literal notranslate"><span class="pre">memenangkan</span></code>, dan <code class="docutils literal notranslate"><span class="pre">pertandingan</span></code>.</p>
 <div class="cell docutils container">
@@ -977,7 +981,7 @@ dtype: int64
 </div>
 </section>
 <section id="stopword-removal">
-<h2>2.4 Stopword Removal<a class="headerlink" href="#stopword-removal" title="Link to this heading">#</a></h2>
+<h3>2.4 Stopword Removal<a class="headerlink" href="#stopword-removal" title="Link to this heading">#</a></h3>
 <p>Stopword removal dilakukan untuk menghapus kata-kata umum yang sering muncul tetapi biasanya tidak memberikan informasi penting dalam analisis teks.</p>
 <p>Contohnya seperti <code class="docutils literal notranslate"><span class="pre">yang</span></code>, <code class="docutils literal notranslate"><span class="pre">dan</span></code>, <code class="docutils literal notranslate"><span class="pre">di</span></code>, <code class="docutils literal notranslate"><span class="pre">ke</span></code>, <code class="docutils literal notranslate"><span class="pre">dari</span></code>, dan kata umum lainnya.</p>
 <div class="cell docutils container">
@@ -1088,7 +1092,7 @@ dtype: int64
 </div>
 </section>
 <section id="stemming">
-<h2>2.5 Stemming<a class="headerlink" href="#stemming" title="Link to this heading">#</a></h2>
+<h3>2.5 Stemming<a class="headerlink" href="#stemming" title="Link to this heading">#</a></h3>
 <p>Stemming dilakukan untuk mengubah kata menjadi bentuk dasarnya. Pada tahap ini digunakan library Sastrawi yang menyediakan stemmer untuk Bahasa Indonesia.</p>
 <p>Sebagai contoh, kata <code class="docutils literal notranslate"><span class="pre">berlari</span></code>, <code class="docutils literal notranslate"><span class="pre">lari</span></code>, dan <code class="docutils literal notranslate"><span class="pre">berlarian</span></code> dapat dikembalikan ke bentuk dasar <code class="docutils literal notranslate"><span class="pre">lari</span></code>.</p>
 <p>Tahap stemming membantu mengurangi variasi kata sehingga kata yang memiliki bentuk berbeda tetapi berasal dari kata dasar yang sama dapat diperlakukan sebagai kata yang sama.</p>
@@ -1173,8 +1177,8 @@ dtype: int64
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ekstraksi-fitur">
-<h1>3. Ekstraksi Fitur<a class="headerlink" href="#ekstraksi-fitur" title="Link to this heading">#</a></h1>
+<section id="ekstraksi-fitur">
+<h2>3. Ekstraksi Fitur<a class="headerlink" href="#ekstraksi-fitur" title="Link to this heading">#</a></h2>
 <p>Pada tahap ini, seluruh kata yang terdapat pada dokumen berita setelah preprocessing diekstrak menggunakan <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> dari library <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>.</p>
 <p>Kata-kata yang ditemukan akan menjadi fitur atau vocabulary yang digunakan pada proses representasi TF-IDF.</p>
 <p>Setiap kata yang berbeda akan menjadi satu fitur dalam dataset.</p>
@@ -1292,8 +1296,8 @@ dtype: int64
 </div></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="one-hot-encoding">
-<h1>4. One-Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Link to this heading">#</a></h1>
+<section id="one-hot-encoding">
+<h2>4. One-Hot Encoding<a class="headerlink" href="#one-hot-encoding" title="Link to this heading">#</a></h2>
 <p>One-Hot Encoding digunakan untuk melihat representasi setiap kata dalam bentuk nilai 0 dan 1. Untuk memudahkan pembacaan, hasil yang ditampilkan hanya beberapa kata pertama.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1512,8 +1516,8 @@ Ukuran One-Hot Encoding: (10, 10)
 </div></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="bag-of-words">
-<h1>5. Bag of Words<a class="headerlink" href="#bag-of-words" title="Link to this heading">#</a></h1>
+<section id="bag-of-words">
+<h2>5. Bag of Words<a class="headerlink" href="#bag-of-words" title="Link to this heading">#</a></h2>
 <p>Bag of Words digunakan untuk melihat jumlah kemunculan kata pada setiap berita. Hasil yang ditampilkan hanya beberapa berita dan beberapa kata agar tabel lebih mudah dibaca.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1527,10 +1531,24 @@ Ukuran One-Hot Encoding: (10, 10)
 
 <span class="n">fitur_bow</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">()</span>
 
-<span class="c1"># Menampilkan 10 berita dan 10 kata pertama</span>
+<span class="c1"># Mengambil 10 berita pertama</span>
+<span class="n">X_bow_tampil</span> <span class="o">=</span> <span class="n">X_bow</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="c1"># Menghitung total kemunculan setiap kata pada 10 berita</span>
+<span class="n">total_kemunculan</span> <span class="o">=</span> <span class="n">X_bow_tampil</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Mengurutkan kata berdasarkan jumlah kemunculan terbanyak</span>
+<span class="n">urutan</span> <span class="o">=</span> <span class="n">total_kemunculan</span><span class="o">.</span><span class="n">A1</span><span class="o">.</span><span class="n">argsort</span><span class="p">()[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Mengambil 10 kata yang paling sering muncul</span>
+<span class="n">indeks_kata</span> <span class="o">=</span> <span class="n">urutan</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="n">kata_tampil</span> <span class="o">=</span> <span class="n">fitur_bow</span><span class="p">[</span><span class="n">indeks_kata</span><span class="p">]</span>
+
+<span class="c1"># Membuat tabel BoW</span>
 <span class="n">df_bow</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="n">X_bow</span><span class="p">[:</span><span class="mi">10</span><span class="p">,</span> <span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span>
-    <span class="n">columns</span><span class="o">=</span><span class="n">fitur_bow</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="n">X_bow_tampil</span><span class="p">[:,</span> <span class="n">indeks_kata</span><span class="p">]</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">kata_tampil</span>
 <span class="p">)</span>
 
 <span class="n">df_bow</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span>
@@ -1542,6 +1560,7 @@ Ukuran One-Hot Encoding: (10, 10)
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah berita:&quot;</span><span class="p">,</span> <span class="n">X_bow</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Jumlah fitur/kata:&quot;</span><span class="p">,</span> <span class="n">X_bow</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ukuran matriks BoW:&quot;</span><span class="p">,</span> <span class="n">X_bow</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">10 kata yang paling sering muncul pada 10 berita pertama:&quot;</span><span class="p">)</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">df_bow</span><span class="p">)</span>
 </pre></div>
@@ -1551,6 +1570,8 @@ Ukuran One-Hot Encoding: (10, 10)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah berita: 200
 Jumlah fitur/kata: 5154
 Ukuran matriks BoW: (200, 5154)
+
+10 kata yang paling sering muncul pada 10 berita pertama:
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1572,69 +1593,69 @@ Ukuran matriks BoW: (200, 5154)
     <tr style="text-align: right;">
       <th></th>
       <th>id</th>
-      <th>aam</th>
-      <th>aan</th>
-      <th>abadi</th>
-      <th>abai</th>
-      <th>abal</th>
-      <th>abang</th>
-      <th>abdukhodir</th>
-      <th>abdul</th>
-      <th>abdullah</th>
-      <th>aberdeen</th>
+      <th>games</th>
+      <th>asi</th>
+      <th>indonesia</th>
+      <th>motogp</th>
+      <th>baca</th>
+      <th>tim</th>
+      <th>atlet</th>
+      <th>marc</th>
+      <th>kuat</th>
+      <th>latih</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
       <td>1</td>
+      <td>9</td>
+      <td>9</td>
+      <td>5</td>
       <td>0</td>
+      <td>2</td>
+      <td>5</td>
+      <td>2</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>6</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
+      <td>12</td>
+      <td>12</td>
+      <td>5</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
       <td>0</td>
       <td>0</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
+      <td>8</td>
+      <td>8</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
+      <td>7</td>
+      <td>7</td>
+      <td>5</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
       <td>0</td>
@@ -1646,56 +1667,56 @@ Ukuran matriks BoW: (200, 5154)
       <td>5</td>
       <td>0</td>
       <td>0</td>
+      <td>1</td>
+      <td>23</td>
+      <td>2</td>
+      <td>1</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>12</td>
       <td>0</td>
       <td>0</td>
     </tr>
     <tr>
       <th>5</th>
       <td>6</td>
+      <td>6</td>
+      <td>6</td>
+      <td>8</td>
+      <td>0</td>
+      <td>2</td>
+      <td>6</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>6</th>
       <td>7</td>
+      <td>9</td>
+      <td>9</td>
+      <td>6</td>
       <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>10</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
       <td>0</td>
     </tr>
     <tr>
       <th>7</th>
       <td>8</td>
+      <td>9</td>
+      <td>8</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>5</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>5</td>
     </tr>
     <tr>
       <th>8</th>
@@ -1704,12 +1725,12 @@ Ukuran matriks BoW: (200, 5154)
       <td>0</td>
       <td>0</td>
       <td>0</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>9</th>
@@ -1718,20 +1739,20 @@ Ukuran matriks BoW: (200, 5154)
       <td>0</td>
       <td>0</td>
       <td>0</td>
+      <td>3</td>
+      <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>1</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="representasi-tf-idf">
-<h1>6. Representasi TF-IDF<a class="headerlink" href="#representasi-tf-idf" title="Link to this heading">#</a></h1>
+<section id="representasi-tf-idf">
+<h2>6. Representasi TF-IDF<a class="headerlink" href="#representasi-tf-idf" title="Link to this heading">#</a></h2>
 <p>Pada tahap ini, setiap dokumen berita direpresentasikan dalam bentuk nilai TF-IDF.</p>
 <p>TF-IDF digunakan untuk memberikan bobot pada setiap kata berdasarkan tingkat kepentingannya dalam sebuah dokumen.</p>
 <p>Secara umum, nilai TF-IDF dihitung menggunakan:</p>
@@ -2001,10 +2022,10 @@ Ukuran data: (200, 5155)
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="reduksi-dimensi-dengan-pca">
-<h1>7. Reduksi Dimensi dengan PCA<a class="headerlink" href="#reduksi-dimensi-dengan-pca" title="Link to this heading">#</a></h1>
+<section id="reduksi-dimensi-dengan-pca">
+<h2>7. Reduksi Dimensi dengan PCA<a class="headerlink" href="#reduksi-dimensi-dengan-pca" title="Link to this heading">#</a></h2>
 <section id="menyiapkan-data-tf-idf">
-<h2>7.1 Menyiapkan Data TF-IDF<a class="headerlink" href="#menyiapkan-data-tf-idf" title="Link to this heading">#</a></h2>
+<h3>7.1 Menyiapkan Data TF-IDF<a class="headerlink" href="#menyiapkan-data-tf-idf" title="Link to this heading">#</a></h3>
 <p>Pada tahap sebelumnya, setiap berita telah direpresentasikan dalam bentuk TF-IDF. Hasil tersebut memiliki jumlah fitur yang cukup banyak karena setiap kata unik menjadi sebuah fitur.</p>
 <p>Data TF-IDF kemudian digunakan sebagai input untuk proses reduksi dimensi menggunakan Principal Component Analysis (PCA).</p>
 <div class="cell docutils container">
@@ -2024,7 +2045,7 @@ Ukuran data: (200, 5155)
 </div>
 </section>
 <section id="menerapkan-pca">
-<h2>7.2 Menerapkan PCA<a class="headerlink" href="#menerapkan-pca" title="Link to this heading">#</a></h2>
+<h3>7.2 Menerapkan PCA<a class="headerlink" href="#menerapkan-pca" title="Link to this heading">#</a></h3>
 <p>PCA digunakan untuk mengurangi jumlah dimensi pada data TF-IDF dengan mempertahankan variasi atau informasi utama yang terdapat pada data.</p>
 <p>Pada tahap ini, jumlah komponen PCA tidak langsung ditentukan menjadi 2. Seluruh komponen terlebih dahulu dihitung untuk melihat seberapa besar variasi data yang dapat dijelaskan oleh masing-masing komponen.</p>
 <div class="cell docutils container">
@@ -2051,7 +2072,7 @@ Ukuran data setelah PCA : (200, 200)
 </div>
 </section>
 <section id="melihat-explained-variance">
-<h2>7.3 Melihat Explained Variance<a class="headerlink" href="#melihat-explained-variance" title="Link to this heading">#</a></h2>
+<h3>7.3 Melihat Explained Variance<a class="headerlink" href="#melihat-explained-variance" title="Link to this heading">#</a></h3>
 <p>Explained variance digunakan untuk mengetahui seberapa besar variasi data yang dapat dijelaskan oleh setiap komponen utama.</p>
 <p>Nilai yang lebih besar menunjukkan bahwa komponen tersebut mampu menjelaskan variasi data yang lebih besar.</p>
 <div class="cell docutils container">
@@ -2279,7 +2300,7 @@ Komponen 200: 0.000000 (0.00%)
 </div>
 </section>
 <section id="menghitung-cumulative-explained-variance">
-<h2>7.4 Menghitung Cumulative Explained Variance<a class="headerlink" href="#menghitung-cumulative-explained-variance" title="Link to this heading">#</a></h2>
+<h3>7.4 Menghitung Cumulative Explained Variance<a class="headerlink" href="#menghitung-cumulative-explained-variance" title="Link to this heading">#</a></h3>
 <p>Cumulative explained variance digunakan untuk melihat jumlah informasi yang dapat dipertahankan jika beberapa komponen utama digabungkan.</p>
 <p>Dengan cumulative explained variance, jumlah komponen yang diperlukan untuk mempertahankan sebagian besar informasi dari data dapat ditentukan.</p>
 <div class="cell docutils container">
@@ -2512,7 +2533,7 @@ Komponen 200: 1.0000 (100.00%)
 </div>
 </section>
 <section id="menentukan-jumlah-komponen">
-<h2>7.5 Menentukan Jumlah Komponen<a class="headerlink" href="#menentukan-jumlah-komponen" title="Link to this heading">#</a></h2>
+<h3>7.5 Menentukan Jumlah Komponen<a class="headerlink" href="#menentukan-jumlah-komponen" title="Link to this heading">#</a></h3>
 <p>Jumlah komponen ditentukan berdasarkan cumulative explained variance. Pada proses ini digunakan batas 95% untuk melihat berapa banyak komponen utama yang diperlukan agar sebagian besar variasi data tetap dipertahankan.</p>
 <p>Dengan cara ini, jumlah komponen tidak ditentukan secara sembarang, tetapi berdasarkan karakteristik data hasil TF-IDF.</p>
 <div class="cell docutils container">
@@ -2540,7 +2561,7 @@ Komponen 200: 1.0000 (100.00%)
 </div>
 </section>
 <section id="melakukan-reduksi-dimensi">
-<h2>7.6 Melakukan Reduksi Dimensi<a class="headerlink" href="#melakukan-reduksi-dimensi" title="Link to this heading">#</a></h2>
+<h3>7.6 Melakukan Reduksi Dimensi<a class="headerlink" href="#melakukan-reduksi-dimensi" title="Link to this heading">#</a></h3>
 <p>Setelah jumlah komponen ditentukan berdasarkan cumulative explained variance, PCA diterapkan kembali menggunakan jumlah komponen tersebut.</p>
 <p>Hasilnya kemudian dibandingkan dengan jumlah fitur sebelum PCA untuk melihat seberapa besar reduksi dimensi yang dilakukan.</p>
 <div class="cell docutils container">
@@ -2942,10 +2963,10 @@ Ukuran data: (200, 162)
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="visualisasi-data-hasil-pca">
-<h1>8. Visualisasi Data Hasil PCA<a class="headerlink" href="#visualisasi-data-hasil-pca" title="Link to this heading">#</a></h1>
+<section id="visualisasi-data-hasil-pca">
+<h2>8. Visualisasi Data Hasil PCA<a class="headerlink" href="#visualisasi-data-hasil-pca" title="Link to this heading">#</a></h2>
 <section id="menyiapkan-data-hasil-pca">
-<h2>8.1 Menyiapkan Data Hasil PCA<a class="headerlink" href="#menyiapkan-data-hasil-pca" title="Link to this heading">#</a></h2>
+<h3>8.1 Menyiapkan Data Hasil PCA<a class="headerlink" href="#menyiapkan-data-hasil-pca" title="Link to this heading">#</a></h3>
 <p>Hasil reduksi dimensi dari PCA disimpan ke dalam DataFrame bersama dengan label berita. Data ini digunakan untuk membuat visualisasi persebaran berita Sport dan Finance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3021,7 +3042,7 @@ Ukuran data: (200, 162)
 </div>
 </section>
 <section id="visualisasi-hasil-pca">
-<h2>8.2 Visualisasi Hasil PCA<a class="headerlink" href="#visualisasi-hasil-pca" title="Link to this heading">#</a></h2>
+<h3>8.2 Visualisasi Hasil PCA<a class="headerlink" href="#visualisasi-hasil-pca" title="Link to this heading">#</a></h3>
 <p>Setelah proses TF-IDF, jumlah fitur yang digunakan menjadi cukup banyak karena setiap kata unik menjadi fitur. PCA dapat digunakan untuk menyederhanakan data tersebut sehingga pola antarberita lebih mudah dilihat.</p>
 <p>Pada tahap visualisasi, data direduksi menjadi dua komponen utama, yaitu PC1 dan PC2. PC1 digunakan sebagai sumbu X dan PC2 sebagai sumbu Y.</p>
 <p>Penggunaan dua komponen pada tahap ini hanya untuk keperluan visualisasi. PCA utama tetap menggunakan jumlah komponen berdasarkan explained variance.</p>
@@ -3274,7 +3295,7 @@ Ukuran data: (200, 4)
 </div>
 </section>
 <section id="scatter-plot-hasil-pca">
-<h2>8.3 Scatter Plot Hasil PCA<a class="headerlink" href="#scatter-plot-hasil-pca" title="Link to this heading">#</a></h2>
+<h3>8.3 Scatter Plot Hasil PCA<a class="headerlink" href="#scatter-plot-hasil-pca" title="Link to this heading">#</a></h3>
 <p>Scatter plot digunakan untuk melihat persebaran berita berdasarkan dua komponen utama. Setiap titik pada grafik mewakili satu berita.</p>
 <p>PC1 digunakan sebagai sumbu X dan PC2 digunakan sebagai sumbu Y. Warna pada grafik menunjukkan label berita, yaitu Sport dan Finance.</p>
 <div class="cell docutils container">
@@ -3312,10 +3333,10 @@ Ukuran data: (200, 4)
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="perbandingan-hasil">
-<h1>9. Perbandingan Hasil<a class="headerlink" href="#perbandingan-hasil" title="Link to this heading">#</a></h1>
+<section id="perbandingan-hasil">
+<h2>9. Perbandingan Hasil<a class="headerlink" href="#perbandingan-hasil" title="Link to this heading">#</a></h2>
 <section id="hasil-tf-idf">
-<h2>9.1 Hasil TF-IDF<a class="headerlink" href="#hasil-tf-idf" title="Link to this heading">#</a></h2>
+<h3>9.1 Hasil TF-IDF<a class="headerlink" href="#hasil-tf-idf" title="Link to this heading">#</a></h3>
 <p>Hasil TF-IDF merupakan representasi data sebelum dilakukan reduksi dimensi. Setiap kata unik menjadi fitur sehingga jumlah kolom dapat menjadi sangat banyak. Nilai pada setiap kolom menunjukkan bobot suatu kata pada masing-masing berita.</p>
 <p>Tabel berikut menampilkan sebagian data TF-IDF untuk melihat bentuk data sebelum dilakukan PCA.</p>
 <div class="cell docutils container">
@@ -3525,6 +3546,7 @@ Ukuran data: (200, 4)
 </table>
 </div></div></div>
 </div>
+</section>
 </section>
 <section id="hasil-pca">
 <h2>9.2 Hasil PCA<a class="headerlink" href="#hasil-pca" title="Link to this heading">#</a></h2>
@@ -3846,9 +3868,8 @@ Jumlah kolom setelah PCA: 160
 </div>
 </div>
 </div>
-</section>
 <section id="hasil-pca-untuk-visualisasi">
-<h2>9.3 Hasil PCA untuk Visualisasi<a class="headerlink" href="#hasil-pca-untuk-visualisasi" title="Link to this heading">#</a></h2>
+<h3>9.3 Hasil PCA untuk Visualisasi<a class="headerlink" href="#hasil-pca-untuk-visualisasi" title="Link to this heading">#</a></h3>
 <p>Selain PCA utama, dilakukan PCA dengan dua komponen untuk kebutuhan visualisasi. Dua komponen tersebut adalah PC1 dan PC2 yang digunakan sebagai sumbu X dan Y pada scatter plot.</p>
 <p>Penggunaan dua komponen pada tahap ini hanya bertujuan untuk menampilkan persebaran data dalam bentuk dua dimensi dan tidak menggantikan hasil PCA utama.</p>
 <div class="cell docutils container">
@@ -3938,6 +3959,7 @@ Jumlah kolom setelah PCA: 160
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3985,51 +4007,52 @@ Jumlah kolom setelah PCA: 160
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. Data Understanding</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset">1.1 Membaca Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-dataset">1.2 Melihat Struktur Dataset</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-jumlah-data">1.3 Mengecek Jumlah Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-distribusi-label">1.4 Melihat Distribusi Label</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-contoh-data">1.5 Menampilkan Contoh Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-kosong">1.6 Mengecek Data Kosong</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-duplikat">1.7 Mengecek Data Duplikat</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding">1. Data Understanding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membaca-dataset">1.1 Membaca Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-struktur-dataset">1.2 Melihat Struktur Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-jumlah-data">1.3 Mengecek Jumlah Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-distribusi-label">1.4 Melihat Distribusi Label</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menampilkan-contoh-data">1.5 Menampilkan Contoh Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-kosong">1.6 Mengecek Data Kosong</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-data-duplikat">1.7 Mengecek Data Duplikat</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">2. Data Preprocessing</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-folding">2.1 Case Folding</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data">2.2 Cleaning Data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisasi">2.3 Tokenisasi</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">2.4 Stopword Removal</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">2.5 Stemming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">2. Data Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-folding">2.1 Case Folding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-data">2.2 Cleaning Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenisasi">2.3 Tokenisasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">2.4 Stopword Removal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">2.5 Stemming</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur">3. Ekstraksi Fitur</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">4. One-Hot Encoding</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">5. Bag of Words</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#representasi-tf-idf">6. Representasi TF-IDF</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-dengan-pca">7. Reduksi Dimensi dengan PCA</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-tf-idf">7.1 Menyiapkan Data TF-IDF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menerapkan-pca">7.2 Menerapkan PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-explained-variance">7.3 Melihat Explained Variance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-cumulative-explained-variance">7.4 Menghitung Cumulative Explained Variance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-jumlah-komponen">7.5 Menentukan Jumlah Komponen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-reduksi-dimensi">7.6 Melakukan Reduksi Dimensi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur">3. Ekstraksi Fitur</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-hot-encoding">4. One-Hot Encoding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bag-of-words">5. Bag of Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representasi-tf-idf">6. Representasi TF-IDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reduksi-dimensi-dengan-pca">7. Reduksi Dimensi dengan PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-tf-idf">7.1 Menyiapkan Data TF-IDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menerapkan-pca">7.2 Menerapkan PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melihat-explained-variance">7.3 Melihat Explained Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-cumulative-explained-variance">7.4 Menghitung Cumulative Explained Variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-jumlah-komponen">7.5 Menentukan Jumlah Komponen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-reduksi-dimensi">7.6 Melakukan Reduksi Dimensi</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-hasil-pca">8. Visualisasi Data Hasil PCA</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-hasil-pca">8.1 Menyiapkan Data Hasil PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-pca">8.2 Visualisasi Hasil PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-hasil-pca">8.3 Scatter Plot Hasil PCA</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-hasil-pca">8. Visualisasi Data Hasil PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyiapkan-data-hasil-pca">8.1 Menyiapkan Data Hasil PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-pca">8.2 Visualisasi Hasil PCA</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scatter-plot-hasil-pca">8.3 Scatter Plot Hasil PCA</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil">9. Perbandingan Hasil</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-tf-idf">9.1 Hasil TF-IDF</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca">9.2 Hasil PCA</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca-untuk-visualisasi">9.3 Hasil PCA untuk Visualisasi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-hasil">9. Perbandingan Hasil</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-tf-idf">9.1 Hasil TF-IDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca">9.2 Hasil PCA</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-pca-untuk-visualisasi">9.3 Hasil PCA untuk Visualisasi</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>

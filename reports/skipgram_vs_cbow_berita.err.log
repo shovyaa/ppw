@@ -1,0 +1,44 @@
+Traceback (most recent call last):
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 782, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\jupyter_core\utils\__init__.py", line 198, in ensure_async
+    result = await obj
+             ^^^^^^^^^
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\jupyter_client\channels.py", line 313, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 1319, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\asyncio\base_events.py", line 685, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 1005, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 806, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\acer\AppData\Roaming\Python\Python312\site-packages\nbclient\client.py", line 856, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['docs_best = SC[BEST_SCN]["docs"]', 'for n in N_GRID:', '    for w in W_GRID:', '        for kind, impl in MODEL_ORDER:', '            m = fit(kind, impl, docs_best, n, w)']
+...
+['            RESULTS.append(dict(fase="grid", skenario=BEST_SCN, model=KIND_NAME[kind], impl=impl,', '                                n=n, w=w, waktu=m["time"], **r))', '        print(f"selesai n={n}, w={w}")', 'df_grid = pd.DataFrame([r for r in RESULTS if r["fase"] == "grid"])', 'display(df_grid[["model", "impl", "n", "w", "acc", "f1", "cv_acc", "cv_f1", "waktu"]].round(4).reset_index(drop=True))']
+-------------------
+

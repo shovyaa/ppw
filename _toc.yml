@@ -6,4 +6,5 @@ root: intro
 chapters:
 - file: crawling.ipynb
 - file: analisis_berita.ipynb
+- file: skipgram_vs_cbow_berita.ipynb
 
