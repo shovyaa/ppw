@@ -37,8 +37,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['from Sastrawi.Stemmer.StemmerFactory import StemmerFactory', '', 'factory = StemmerFactory()', 'stemmer = factory.create_stemmer()', '']
+['import re', 'import hashlib', 'from Sastrawi.Stemmer.StemmerFactory import StemmerFactory', 'from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory', '']
 ...
-['df["teks_preprocessed"] = df["tokens_stopword"].apply(', '    stemming', ')', '', 'df[["isi_berita", "teks_preprocessed"]].head()']
+['# Sidik teks: dipakai untuk memastikan cache tahap berikutnya masih sesuai', 'SIDIK = hashlib.md5("||".join(df["teks_preprocessed"]).encode("utf-8")).hexdigest()', '', 'print("Jumlah stopword:", len(stopword))', 'df[["isi_berita", "teks_preprocessed"]].head()']
 -------------------
 
