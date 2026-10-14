@@ -1,0 +1,5 @@
+﻿Skenario,Keterangan,Token unik,Jumlah kolom,Parameter terbaik,Akurasi CV,Akurasi data uji
+V1,"Hapus tanda baca, hapus stopword",7459,50,"{'sg__vector_size': 50, 'sg__window': 5}",0.9812,1.0
+V2,"Pertahankan tanda baca, hapus stopword",7498,50,"{'sg__vector_size': 50, 'sg__window': 5}",0.9812,1.0
+V3,"Hapus tanda baca, pertahankan stopword",7568,100,"{'sg__vector_size': 100, 'sg__window': 10}",0.9812,1.0
+V4,Pertahankan semua (tanpa pembersihan tambahan),7607,100,"{'sg__vector_size': 100, 'sg__window': 10}",0.9812,1.0

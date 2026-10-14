@@ -86,7 +86,7 @@
     <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?v=4e4fcec4"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="🌸 Analisis Berita: TF-IDF vs Skip-gram" href="analisis_berita_skipgram.html" />
+    <link rel="next" title="🌸 Analisis Berita: Skip-gram" href="analisis_berita_skipgram.html" />
     <link rel="prev" title="🌸 Analisis Berita" href="analisis_berita.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -209,7 +209,7 @@
 <li class="toctree-l1"><a class="reference internal" href="crawling.html">🌸 Scrapping Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="analisis_berita.html">🌸 Analisis Berita</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🌸 Analisis BeritaWord Embedding Skip-gram vs CBOW pada Klasifikasi Berita (Sport vs Finance)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analisis_berita_skipgram.html">🌸 Analisis Berita: TF-IDF vs Skip-gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_berita_skipgram.html">🌸 Analisis Berita: Skip-gram</a></li>
 </ul>
 
     </div>
@@ -935,10 +935,60 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Manual: vocab=2203, waktu training=15.53 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Gensim: vocab=2203, waktu training=1.81 s
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">for</span> <span class="n">impl</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Manual&quot;</span><span class="p">,</span> <span class="s2">&quot;Gensim&quot;</span><span class="p">]:</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">MODELS</span><span class="p">[(</span><span class="n">SCN</span><span class="p">,</span> <span class="s2">&quot;sg&quot;</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">N_BASE</span><span class="p">,</span> <span class="n">W_BASE</span><span class="p">)]</span> <span class="o">=</span> <span class="n">m</span> <span class="o">=</span> <span class="n">fit</span><span class="p">(</span><span class="s2">&quot;sg&quot;</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">SC</span><span class="p">[</span><span class="n">SCN</span><span class="p">][</span><span class="s2">&quot;docs&quot;</span><span class="p">],</span> <span class="n">N_BASE</span><span class="p">,</span> <span class="n">W_BASE</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skip-gram </span><span class="si">{</span><span class="n">impl</span><span class="si">:</span><span class="s2">6s</span><span class="si">}</span><span class="s2">: vocab=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;words&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">, waktu training=</span><span class="si">{</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s&quot;</span><span class="p">)</span>
+
+<span class="nn">Cell In[5], line 75,</span> in <span class="ni">fit</span><span class="nt">(kind, impl, docs, n, w)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">if</span> <span class="n">impl</span> <span class="o">==</span> <span class="s2">&quot;Manual&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="n">words</span><span class="p">,</span> <span class="n">w2i</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="n">build_vocab</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">MIN_COUNT</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">75</span>     <span class="n">W</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">train_manual</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">encode_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">w2i</span><span class="p">),</span> <span class="n">freq</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">76</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span>     <span class="n">words</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">train_gensim</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">docs</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+<span class="nn">Cell In[5], line 55,</span> in <span class="ni">train_manual</span><span class="nt">(kind, enc, freq, V, n, w, epochs, neg, lr0, lr_min, batch, seed)</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="n">gp</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">((</span><span class="n">h</span><span class="o">*</span><span class="n">up</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">gn</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;bd,bkd-&gt;bk&#39;</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">un</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="n">gh</span> <span class="o">=</span> <span class="n">gp</span><span class="p">[:,</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">up</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;bk,bkd-&gt;bd&#39;</span><span class="p">,</span> <span class="n">gn</span><span class="p">,</span> <span class="n">un</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">55</span> <span class="n">scatter_add</span><span class="p">(</span><span class="n">W_out</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">tgt</span><span class="p">,</span> <span class="n">negs</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]),</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="o">-</span><span class="n">lr</span><span class="o">*</span><span class="n">gp</span><span class="p">[:,</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="n">lr</span><span class="o">*</span><span class="n">gn</span><span class="p">[:,:,</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="n">h</span><span class="p">[:,</span><span class="kc">None</span><span class="p">,:])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">h</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]))</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;sg&#39;</span><span class="p">:</span> <span class="n">scatter_add</span><span class="p">(</span><span class="n">W_in</span><span class="p">,</span> <span class="n">inp</span><span class="p">,</span> <span class="o">-</span><span class="n">lr</span><span class="o">*</span><span class="n">gh</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="k">else</span><span class="p">:</span>
+
+<span class="nn">Cell In[5], line 27,</span> in <span class="ni">scatter_add</span><span class="nt">(W, idx, vals)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;W[idx[i]] += vals[i], dengan indeks duplikat dijumlahkan (lebih cepat dari np.add.at).&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">idx</span><span class="o">.</span><span class="n">ravel</span><span class="p">();</span> <span class="n">vals</span> <span class="o">=</span> <span class="n">vals</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">idx</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="n">o</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;stable&#39;</span><span class="p">);</span> <span class="n">si</span> <span class="o">=</span> <span class="n">idx</span><span class="p">[</span><span class="n">o</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">starts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flatnonzero</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">r_</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="n">si</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">!=</span> <span class="n">si</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="n">W</span><span class="p">[</span><span class="n">si</span><span class="p">[</span><span class="n">starts</span><span class="p">]]</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="o">.</span><span class="n">reduceat</span><span class="p">(</span><span class="n">vals</span><span class="p">[</span><span class="n">o</span><span class="p">],</span> <span class="n">starts</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python312\site-packages\numpy\_core\fromnumeric.py:1242,</span> in <span class="ni">argsort</span><span class="nt">(a, axis, kind, order, stable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1129</span> <span class="nd">@array_function_dispatch</span><span class="p">(</span><span class="n">_argsort_dispatcher</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1130</span> <span class="k">def</span><span class="w"> </span><span class="nf">argsort</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">stable</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1131</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1132</span><span class="sd">     Returns the indices that would sort an array.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1133</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1241</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1242</span>     <span class="k">return</span> <span class="n">_wrapfunc</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span>         <span class="n">a</span><span class="p">,</span> <span class="s1">&#39;argsort&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="n">kind</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">,</span> <span class="n">stable</span><span class="o">=</span><span class="n">stable</span>
+<span class="g g-Whitespace">   </span><span class="mi">1244</span>     <span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python312\site-packages\numpy\_core\fromnumeric.py:57,</span> in <span class="ni">_wrapfunc</span><span class="nt">(obj, method, *args, **kwds)</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span>     <span class="k">return</span> <span class="n">_wrapit</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">57</span>     <span class="k">return</span> <span class="n">bound</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span>     <span class="c1"># A TypeError occurs if the object does have such a method in its</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span>     <span class="c1"># class, but its signature is not identical to that of NumPy&#39;s. This</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span>     <span class="c1"># Call _wrapit from within the except clause to ensure a potential</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="c1"># exception has a traceback chain.</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>     <span class="k">return</span> <span class="n">_wrapit</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -955,10 +1005,8 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2203, waktu training=6.33 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Gensim: vocab=2203, waktu training=0.96 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2203, waktu training=5.69 s
+CBOW Gensim: vocab=2203, waktu training=0.90 s
 </pre></div>
 </div>
 </div>
@@ -1018,7 +1066,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.975</td>
       <td>0.0158</td>
       <td>0.9750</td>
-      <td>15.5312</td>
+      <td>14.6109</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1029,7 +1077,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.975</td>
       <td>0.0158</td>
       <td>0.9750</td>
-      <td>1.8101</td>
+      <td>1.7041</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1040,7 +1088,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.975</td>
       <td>0.0158</td>
       <td>0.9750</td>
-      <td>6.3274</td>
+      <td>5.6907</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1051,7 +1099,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.940</td>
       <td>0.0339</td>
       <td>0.9399</td>
-      <td>0.9593</td>
+      <td>0.9017</td>
     </tr>
   </tbody>
 </table>
@@ -1130,10 +1178,8 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Manual: vocab=2329, waktu training=22.20 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Gensim: vocab=2329, waktu training=2.52 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Manual: vocab=2329, waktu training=20.63 s
+Skip-gram Gensim: vocab=2329, waktu training=2.39 s
 </pre></div>
 </div>
 </div>
@@ -1150,10 +1196,8 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2329, waktu training=8.69 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Gensim: vocab=2329, waktu training=1.32 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2329, waktu training=8.41 s
+CBOW Gensim: vocab=2329, waktu training=1.25 s
 </pre></div>
 </div>
 </div>
@@ -1213,7 +1257,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.975</td>
       <td>0.0158</td>
       <td>0.9750</td>
-      <td>22.1973</td>
+      <td>20.6285</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1224,7 +1268,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.955</td>
       <td>0.0332</td>
       <td>0.9549</td>
-      <td>2.5232</td>
+      <td>2.3861</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1235,7 +1279,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.950</td>
       <td>0.0354</td>
       <td>0.9498</td>
-      <td>8.6912</td>
+      <td>8.4112</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1246,7 +1290,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.930</td>
       <td>0.0430</td>
       <td>0.9298</td>
-      <td>1.3193</td>
+      <td>1.2547</td>
     </tr>
   </tbody>
 </table>
@@ -1325,10 +1369,8 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Manual: vocab=2285, waktu training=17.58 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Gensim: vocab=2285, waktu training=1.97 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Manual: vocab=2285, waktu training=15.73 s
+Skip-gram Gensim: vocab=2285, waktu training=1.85 s
 </pre></div>
 </div>
 </div>
@@ -1345,10 +1387,8 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2285, waktu training=6.42 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Gensim: vocab=2285, waktu training=0.99 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2285, waktu training=6.01 s
+CBOW Gensim: vocab=2285, waktu training=0.97 s
 </pre></div>
 </div>
 </div>
@@ -1408,7 +1448,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.970</td>
       <td>0.0245</td>
       <td>0.9700</td>
-      <td>17.5759</td>
+      <td>15.7290</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1419,7 +1459,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.960</td>
       <td>0.0255</td>
       <td>0.9599</td>
-      <td>1.9723</td>
+      <td>1.8513</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1430,7 +1470,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.975</td>
       <td>0.0274</td>
       <td>0.9750</td>
-      <td>6.4190</td>
+      <td>6.0108</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1441,7 +1481,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.935</td>
       <td>0.0406</td>
       <td>0.9349</td>
-      <td>0.9929</td>
+      <td>0.9708</td>
     </tr>
   </tbody>
 </table>
@@ -1520,10 +1560,8 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Manual: vocab=2411, waktu training=24.07 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Gensim: vocab=2411, waktu training=2.70 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Skip-gram Manual: vocab=2411, waktu training=21.64 s
+Skip-gram Gensim: vocab=2411, waktu training=2.53 s
 </pre></div>
 </div>
 </div>
@@ -1540,10 +1578,8 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2411, waktu training=8.92 s
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Gensim: vocab=2411, waktu training=1.37 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CBOW Manual: vocab=2411, waktu training=9.10 s
+CBOW Gensim: vocab=2411, waktu training=1.30 s
 </pre></div>
 </div>
 </div>
@@ -1603,7 +1639,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.970</td>
       <td>0.0187</td>
       <td>0.9699</td>
-      <td>24.0674</td>
+      <td>21.6387</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1614,7 +1650,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.955</td>
       <td>0.0292</td>
       <td>0.9548</td>
-      <td>2.7034</td>
+      <td>2.5296</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1625,7 +1661,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.925</td>
       <td>0.0500</td>
       <td>0.9249</td>
-      <td>8.9170</td>
+      <td>9.0953</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1636,7 +1672,7 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
       <td>0.920</td>
       <td>0.0579</td>
       <td>0.9199</td>
-      <td>1.3729</td>
+      <td>1.3011</td>
     </tr>
   </tbody>
 </table>
@@ -1775,31 +1811,31 @@ One-hot label 3 berita pertama: [[0, 1], [0, 1], [0, 1]] -&gt; sport sport sport
   <tbody>
     <tr>
       <th>S1_angka_dibuang_stopword_dibuang</th>
-      <td>0.96</td>
-      <td>6.33</td>
-      <td>1.81</td>
-      <td>15.53</td>
+      <td>0.90</td>
+      <td>5.69</td>
+      <td>1.70</td>
+      <td>14.61</td>
     </tr>
     <tr>
       <th>S2_angka_dibuang_stopword_ada</th>
-      <td>1.32</td>
-      <td>8.69</td>
-      <td>2.52</td>
-      <td>22.20</td>
+      <td>1.25</td>
+      <td>8.41</td>
+      <td>2.39</td>
+      <td>20.63</td>
     </tr>
     <tr>
       <th>S3_angka_ada_stopword_dibuang</th>
-      <td>0.99</td>
-      <td>6.42</td>
-      <td>1.97</td>
-      <td>17.58</td>
+      <td>0.97</td>
+      <td>6.01</td>
+      <td>1.85</td>
+      <td>15.73</td>
     </tr>
     <tr>
       <th>S4_angka_ada_stopword_ada</th>
-      <td>1.37</td>
-      <td>8.92</td>
-      <td>2.70</td>
-      <td>24.07</td>
+      <td>1.30</td>
+      <td>9.10</td>
+      <td>2.53</td>
+      <td>21.64</td>
     </tr>
   </tbody>
 </table>
@@ -1839,39 +1875,481 @@ Skenario terpilih untuk eksperimen n dan w: S1_angka_dibuang_stopword_dibuang
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>selesai n=10, w=1
+selesai n=10, w=3
+selesai n=10, w=5
+selesai n=50, w=1
+selesai n=50, w=3
+selesai n=50, w=5
+selesai n=100, w=1
+selesai n=100, w=3
+selesai n=100, w=5
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>selesai n=10, w=3
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">-------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">W_GRID</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">for</span> <span class="n">kind</span><span class="p">,</span> <span class="n">impl</span> <span class="ow">in</span> <span class="n">MODEL_ORDER</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>         <span class="n">m</span> <span class="o">=</span> <span class="n">fit</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">docs_best</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">r</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">doc_vectors</span><span class="p">(</span><span class="n">docs_best</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">RESULTS</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">fase</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">,</span> <span class="n">skenario</span><span class="o">=</span><span class="n">BEST_SCN</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">KIND_NAME</span><span class="p">[</span><span class="n">kind</span><span class="p">],</span> <span class="n">impl</span><span class="o">=</span><span class="n">impl</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>                             <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="p">,</span> <span class="n">waktu</span><span class="o">=</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="o">**</span><span class="n">r</span><span class="p">))</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="nn">Cell In[5], line 75,</span> in <span class="ni">fit</span><span class="nt">(kind, impl, docs, n, w)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span> <span class="k">if</span> <span class="n">impl</span> <span class="o">==</span> <span class="s2">&quot;Manual&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>     <span class="n">words</span><span class="p">,</span> <span class="n">w2i</span><span class="p">,</span> <span class="n">freq</span> <span class="o">=</span> <span class="n">build_vocab</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">MIN_COUNT</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">75</span>     <span class="n">W</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">train_manual</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">encode_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">w2i</span><span class="p">),</span> <span class="n">freq</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">),</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">76</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">77</span>     <span class="n">words</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">train_gensim</span><span class="p">(</span><span class="n">kind</span><span class="p">,</span> <span class="n">docs</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-<span class="nn">Cell In[5], line 44,</span> in <span class="ni">train_manual</span><span class="nt">(kind, enc, freq, V, n, w, epochs, neg, lr0, lr_min, batch, seed)</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span>     <span class="n">b</span> <span class="o">=</span> <span class="n">order</span><span class="p">[</span><span class="n">s</span><span class="p">:</span><span class="n">s</span><span class="o">+</span><span class="n">batch</span><span class="p">];</span> <span class="n">lr</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">lr_min</span><span class="p">,</span> <span class="n">lr0</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">step</span><span class="o">/</span><span class="n">total</span><span class="p">));</span> <span class="n">step</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="ne">---&gt; </span><span class="mi">44</span>     <span class="n">negs</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="n">neg</span><span class="p">),</span> <span class="n">p</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">45</span>     <span class="k">if</span> <span class="n">kind</span> <span class="o">==</span> <span class="s1">&#39;sg&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>         <span class="n">inp</span> <span class="o">=</span> <span class="n">centers</span><span class="p">[</span><span class="n">b</span><span class="p">];</span> <span class="n">tgt</span> <span class="o">=</span> <span class="n">contexts</span><span class="p">[</span><span class="n">b</span><span class="p">]</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>model</th>
+      <th>impl</th>
+      <th>n</th>
+      <th>w</th>
+      <th>acc</th>
+      <th>f1</th>
+      <th>cv_acc</th>
+      <th>cv_f1</th>
+      <th>waktu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>10</td>
+      <td>1</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.960</td>
+      <td>0.9598</td>
+      <td>3.4446</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>10</td>
+      <td>1</td>
+      <td>0.925</td>
+      <td>0.9250</td>
+      <td>0.950</td>
+      <td>0.9499</td>
+      <td>0.8505</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>10</td>
+      <td>1</td>
+      <td>0.875</td>
+      <td>0.8743</td>
+      <td>0.920</td>
+      <td>0.9197</td>
+      <td>2.2232</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>10</td>
+      <td>1</td>
+      <td>0.950</td>
+      <td>0.9499</td>
+      <td>0.925</td>
+      <td>0.9247</td>
+      <td>0.6056</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>10</td>
+      <td>3</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.980</td>
+      <td>0.9800</td>
+      <td>10.9408</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>10</td>
+      <td>3</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.970</td>
+      <td>0.9700</td>
+      <td>1.5577</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>10</td>
+      <td>3</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>2.8839</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>10</td>
+      <td>3</td>
+      <td>0.925</td>
+      <td>0.9250</td>
+      <td>0.955</td>
+      <td>0.9549</td>
+      <td>0.7640</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>10</td>
+      <td>5</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.980</td>
+      <td>0.9800</td>
+      <td>17.8177</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>10</td>
+      <td>5</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.990</td>
+      <td>0.9900</td>
+      <td>2.1573</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>10</td>
+      <td>5</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.970</td>
+      <td>0.9700</td>
+      <td>3.5231</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>10</td>
+      <td>5</td>
+      <td>0.950</td>
+      <td>0.9500</td>
+      <td>0.965</td>
+      <td>0.9649</td>
+      <td>0.8383</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>50</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.980</td>
+      <td>0.9800</td>
+      <td>7.0463</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>50</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.970</td>
+      <td>0.9700</td>
+      <td>1.1716</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>50</td>
+      <td>1</td>
+      <td>0.925</td>
+      <td>0.9250</td>
+      <td>0.960</td>
+      <td>0.9599</td>
+      <td>4.3603</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>50</td>
+      <td>1</td>
+      <td>0.925</td>
+      <td>0.9250</td>
+      <td>0.940</td>
+      <td>0.9399</td>
+      <td>0.7690</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>50</td>
+      <td>3</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>21.1924</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>50</td>
+      <td>3</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.970</td>
+      <td>0.9700</td>
+      <td>2.1728</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>50</td>
+      <td>3</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>6.2992</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>50</td>
+      <td>3</td>
+      <td>0.950</td>
+      <td>0.9500</td>
+      <td>0.955</td>
+      <td>0.9549</td>
+      <td>0.9270</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>50</td>
+      <td>5</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.985</td>
+      <td>0.9850</td>
+      <td>38.2060</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>50</td>
+      <td>5</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>4.4148</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>50</td>
+      <td>5</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.970</td>
+      <td>0.9700</td>
+      <td>8.8615</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>50</td>
+      <td>5</td>
+      <td>0.950</td>
+      <td>0.9500</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.8131</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>100</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.985</td>
+      <td>0.9850</td>
+      <td>16.8579</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>100</td>
+      <td>1</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.980</td>
+      <td>0.9800</td>
+      <td>1.0446</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>100</td>
+      <td>1</td>
+      <td>0.950</td>
+      <td>0.9499</td>
+      <td>0.965</td>
+      <td>0.9649</td>
+      <td>10.2018</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>100</td>
+      <td>1</td>
+      <td>0.950</td>
+      <td>0.9499</td>
+      <td>0.955</td>
+      <td>0.9549</td>
+      <td>0.7350</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>100</td>
+      <td>3</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>50.6137</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>100</td>
+      <td>3</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>1.8353</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>100</td>
+      <td>3</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>18.3327</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>100</td>
+      <td>3</td>
+      <td>0.950</td>
+      <td>0.9500</td>
+      <td>0.965</td>
+      <td>0.9649</td>
+      <td>0.8940</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Skip-gram</td>
+      <td>Manual</td>
+      <td>100</td>
+      <td>5</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.990</td>
+      <td>0.9900</td>
+      <td>136.3827</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Skip-gram</td>
+      <td>Gensim</td>
+      <td>100</td>
+      <td>5</td>
+      <td>1.000</td>
+      <td>1.0000</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>6.4436</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>CBOW</td>
+      <td>Manual</td>
+      <td>100</td>
+      <td>5</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>47.0600</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>CBOW</td>
+      <td>Gensim</td>
+      <td>100</td>
+      <td>5</td>
+      <td>0.975</td>
+      <td>0.9750</td>
+      <td>0.970</td>
+      <td>0.9700</td>
+      <td>2.0785</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3639,7 +4117,7 @@ w
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">🌸 Analisis Berita: TF-IDF vs Skip-gram</p>
+        <p class="prev-next-title">🌸 Analisis Berita: Skip-gram</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

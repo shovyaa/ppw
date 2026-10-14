@@ -211,7 +211,7 @@
 <li class="toctree-l1"><a class="reference internal" href="crawling.html">🌸 Scrapping Data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">🌸 Analisis Berita</a></li>
 <li class="toctree-l1"><a class="reference internal" href="skipgram_vs_cbow_berita.html">🌸 Analisis BeritaWord Embedding Skip-gram vs CBOW pada Klasifikasi Berita (Sport vs Finance)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="analisis_berita_skipgram.html">🌸 Analisis Berita: TF-IDF vs Skip-gram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="analisis_berita_skipgram.html">🌸 Analisis Berita: Skip-gram</a></li>
 </ul>
 
     </div>
@@ -984,11 +984,11 @@ dtype: int64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Defaulting to user installation because normal site-packages is not writeable
 Requirement already satisfied: nltk in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (3.10.3)
 Requirement already satisfied: defusedxml in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from nltk) (0.7.1)
-Requirement already satisfied: click in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from nltk) (8.2.1)
+Requirement already satisfied: click in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from nltk) (8.5.0)
 Requirement already satisfied: joblib in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from nltk) (1.5.1)
 Requirement already satisfied: regex&gt;=2021.8.3 in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from nltk) (2026.9.10)
 Requirement already satisfied: tqdm in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from nltk) (4.70.1)
-Requirement already satisfied: colorama in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from click-&gt;nltk) (0.4.6)
+Requirement already satisfied: colorama in C:\Users\acer\AppData\Roaming\Python\Python312\site-packages (from tqdm-&gt;nltk) (0.4.6)
 Note: you may need to restart the kernel to use updated packages.
 </pre></div>
 </div>
@@ -1258,12 +1258,27 @@ Note: you may need to restart the kernel to use updated packages.
 <span class="g g-Whitespace">    </span><span class="mi">111</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">current_word</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">current_word</span>
 
-<span class="nn">File ~\AppData\Roaming\Python\Python312\site-packages\Sastrawi\Stemmer\Context\Context.py:96,</span> in <span class="ni">Context.accept</span><span class="nt">(self, visitor)</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span> <span class="k">def</span><span class="w"> </span><span class="nf">remove_suffixes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span>     <span class="bp">self</span><span class="o">.</span><span class="n">accept_visitors</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">suffix_visitors</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">96</span> <span class="k">def</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitor</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span> <span class="k">def</span><span class="w"> </span><span class="nf">accept_visitors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitors</span><span class="p">):</span>
+<span class="nn">File ~\AppData\Roaming\Python\Python312\site-packages\Sastrawi\Stemmer\Context\Context.py:97,</span> in <span class="ni">Context.accept</span><span class="nt">(self, visitor)</span>
+<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="k">def</span><span class="w"> </span><span class="nf">accept</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">visitor</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">97</span>     <span class="n">visitor</span><span class="o">.</span><span class="n">visit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python312\site-packages\Sastrawi\Stemmer\Context\Visitor\AbstractDisambiguatePrefixRule.py:14,</span> in <span class="ni">AbstractDisambiguatePrefixRule.visit</span><span class="nt">(self, context)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">for</span> <span class="n">disambiguator</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">disambiguators</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">disambiguator</span><span class="o">.</span><span class="n">disambiguate</span><span class="p">(</span><span class="n">context</span><span class="o">.</span><span class="n">current_word</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">if</span> <span class="n">context</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="k">break</span>
+
+<span class="nn">File ~\AppData\Roaming\Python\Python312\site-packages\Sastrawi\Morphology\Disambiguator\DisambiguatorPrefixRule39.py:21,</span> in <span class="ni">DisambiguatorPrefixRule39b.disambiguate</span><span class="nt">(self, word)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="k">class</span><span class="w"> </span><span class="nc">DisambiguatorPrefixRule39b</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Disambiguate Prefix Rule 39b (CC infix rules)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span><span class="sd">     Rule 39b : CemV -&gt; CV</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">21</span>     <span class="k">def</span><span class="w"> </span><span class="nf">disambiguate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span><span class="w">         </span><span class="sd">&quot;&quot;&quot;Disambiguate Prefix Rule 39b (CC infix rules)</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span><span class="sd">         Rule 39b : CemV -&gt; CV</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span><span class="sd">         &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="n">matches</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^([bcdfghjklmnpqrstvwxyz])em([aiueo])(.*)$&#39;</span><span class="p">,</span> <span class="n">word</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
